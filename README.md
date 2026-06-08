@@ -30,7 +30,7 @@ The site features high-performance rendering, fluid motion, strict a11y standard
 *   **Framework**: Next.js 16 (App Router) using React Server Components (RSC) for optimized initial page loads.
 *   **Styling**: Tailwind CSS v4 featuring modern custom themes and clean responsive layouts.
 *   **Animations**: Framer Motion for scroll-linked animations, micro-interactions, and glassmorphic card hover effects (automatically respecting user preferences for reduced motion).
-*   **Artificial Intelligence**: Google Generative AI SDK (`@google/generative-ai`) utilizing the fast and efficient `gemini-2.5-flash` model for the interactive chat widget.
+*   **Artificial Intelligence**: Google Generative AI SDK (`@google/generative-ai`) utilizing the fast and efficient `gemini-flash-latest` model for the interactive chat widget.
 *   **Type Safety**: TypeScript for strict schema contracts.
 
 ---
