@@ -59,10 +59,15 @@ export async function POST(request: Request) {
       systemInstruction: buildGeminiSystemPrompt(),
     });
 
-    const history = messages.slice(0, -1).map((msg) => ({
-      role: msg.role === "user" ? "user" : "model",
-      parts: [{ text: msg.content }],
-    }));
+    // Gemini API requires the first message in chat history to have the role 'user'.
+    // We filter out the initial welcome message (which has role 'model') from the history.
+    const history = messages
+      .slice(0, -1)
+      .filter((msg, index) => !(index === 0 && msg.role === "model"))
+      .map((msg) => ({
+        role: msg.role === "user" ? "user" : "model",
+        parts: [{ text: msg.content }],
+      }));
 
     const chat = model.startChat({ history });
     const result = await chat.sendMessage(lastMessage.content);
