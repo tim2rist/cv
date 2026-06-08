@@ -1,0 +1,107 @@
+@import "tailwindcss";
+
+:root {
+  --background: #030712;
+  --foreground: #f1f5f9;
+  --obsidian: #020617;
+  --cyan-glow: rgba(34, 211, 238, 0.15);
+  --emerald-glow: rgba(52, 211, 153, 0.12);
+  --violet-glow: rgba(139, 92, 246, 0.12);
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--obsidian);
+  color: var(--foreground);
+  font-family: var(--font-geist-sans), system-ui, sans-serif;
+}
+
+::selection {
+  background: rgba(34, 211, 238, 0.25);
+  color: #f8fafc;
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #0f172a;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #334155;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #475569;
+}
+
+.grid-bg {
+  background-image:
+    linear-gradient(rgba(148, 163, 184, 0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(148, 163, 184, 0.04) 1px, transparent 1px);
+  background-size: 48px 48px;
+  mask-image: radial-gradient(ellipse 80% 60% at 50% 40%, black 20%, transparent 75%);
+}
+
+.glass-card {
+  @apply rounded-2xl border border-white/10 bg-slate-900/40 backdrop-blur-md;
+}
+
+@keyframes ambient-drift {
+  0%,
+  100% {
+    transform: translate(0, 0) scale(1);
+    opacity: 0.85;
+  }
+  33% {
+    transform: translate(24px, -18px) scale(1.06);
+    opacity: 1;
+  }
+  66% {
+    transform: translate(-16px, 12px) scale(0.97);
+    opacity: 0.9;
+  }
+}
+
+@keyframes grid-fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.ambient-glow {
+  animation: ambient-drift 18s ease-in-out infinite;
+}
+
+.ambient-glow-delayed {
+  animation-duration: 22s;
+}
+
+.animate-grid-fade {
+  animation: grid-fade-in 1.2s ease-out forwards;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ambient-glow,
+  .ambient-glow-delayed,
+  .animate-grid-fade {
+    animation: none;
+    opacity: 1;
+  }
+}
